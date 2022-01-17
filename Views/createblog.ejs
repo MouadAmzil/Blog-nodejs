@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../Views/partials/head.ejs")-%>
+
+    <body>
+        <%- include("../Views/partials/navbar.ejs")-%>
+            <div class="container mt-5">
+                <form action="/blogs" method="post" class="row g-3 p-2 border">
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">Title</label>
+                        <input type="text" class="form-control" name="title" id="inputEmail4" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputPassword4" class="form-label">Author</label>
+                        <input type="text" class="form-control" name="author" id="inputPassword4" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Context</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" name="body" rows="3"
+                            required></textarea>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Add new</button>
+                    </div>
+                </form>
+            </div>
+            <%- include("../Views/partials/footer.ejs")-%>
+    </body>
+
+</html>

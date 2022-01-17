@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../Views/partials/head.ejs")-%>
+
+    <body>
+        <%- include("../Views/partials/navbar.ejs")-%>
+            <div class="container">
+                <% if (Data.length> 0) { %>
+                    <%Data.forEach(blog=> {%>
+
+
+                        <div class="card mt-4">
+                            <div class="card-header">
+                                <%= blog.title %>
+                            </div>
+                            <div class="card-body">
+                                <blockquote class="blockquote mb-0">
+                                    <p>
+                                        <%= blog.body %>
+                                    </p>
+                                    <footer class="blockquote-footer">by <%= blog.author %>
+                                    </footer>
+                                </blockquote>
+                                <a href="/blogs/<%= blog._id %>" class="btn btn-primary">Go somewhere</a>
+
+                            </div>
+                        </div>
+
+                        <% });} else { %>
+                            <p>There are no blogs to display...</p>
+                            <% } %>
+            </div>
+
+
+
+
+
+
+            <%- include("../Views/partials/footer.ejs")-%>
+
+    </body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../Views/partials/head.ejs")-%>
+
+    <body>
+        <%- include("../Views/partials/navbar.ejs")-%>
+            <div class="container mt-5">
+                <div class="card">
+                    <div class="card-body position-relative">
+                        <h5 class="card-title">
+                            <%= Data.title %>
+                        </h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <%= Data.author %>
+                        </h6>
+                        <p class="card-text">
+                            <%= Data.body %>
+                        </p>
+                        <div class="position-absolute top-0 end-0"><a data-id="<%= Data._id %>"
+                                class="delete btn btn-danger">
+                                Delete</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <%- include("../Views/partials/footer.ejs")-%>
+                <script>
+                    const Getelement = document.querySelector("a.delete");
+                    Getelement.addEventListener("click", () => {
+                        const UrlGet = `/blogs/${Getelement.dataset.id}`;
+                        fetch(UrlGet, { method: "DELETE" })
+                            .then(response => response.json())
+                            .then(data => window.location.href = data.redirect)
+                            .catch(err => console.log(err));
+                    })
+                </script>
+    </body>
+
+</html>
